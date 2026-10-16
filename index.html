@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thejovati Narayanan · Portfolio</title>
+<meta name="description" content="Six dishes on my thali, six sides of me. Portfolio of Thejovati Narayanan, B.Tech + MBA Data Science, NMIMS MPSTME Mumbai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+<!-- ============ Sticky header + menu ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="menu-toggle-wrap">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="siteMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <span>Menu</span>
+    </div>
+    <div class="topbar-mail">
+      <a href="mailto:thejovati256@gmail.com">thejovati256@gmail.com</a>
+    </div>
+  </div>
+  <nav class="site-menu" id="siteMenu" hidden>
+    <div class="site-menu-list">
+      <button class="menu-tile" data-i="0" style="--hue:0;--d:0s">About me</button>
+      <button class="menu-tile" data-i="1" style="--hue:225;--d:.04s">Skills</button>
+      <button class="menu-tile" data-i="2" style="--hue:40;--d:.08s">Projects</button>
+      <button class="menu-tile" data-i="3" style="--hue:105;--d:.12s">Experience</button>
+      <button class="menu-tile" data-i="4" style="--hue:300;--d:.16s">Leadership</button>
+      <button class="menu-tile" data-i="5" style="--hue:150;--d:.2s">Beyond class</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ Hero: the thali ============ -->
+<section class="hero" id="hero" data-screen-label="Front page">
+  <div class="hero-inner">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <span class="eyebrow r1">Hi, I'm Thejovati Narayanan</span>
+        <h1 class="r2">Come, sit.<br>Have a taste.</h1>
+        <p class="hero-lede r3">Six dishes on my thali, six sides of me. Pick one and I'll show you that side.</p>
+        <div class="greeter r4">
+          <div class="face" id="face">
+            <div class="face-clip">
+              <img src="assets/thejovati-avatar.png" alt="Thejovati" draggable="false" id="avatar">
+              <svg viewBox="70 50 1114 1114" id="faceSvg" aria-hidden="true"></svg>
+            </div>
+          </div>
+          <div class="bubble">
+            <span class="bubble-tail"></span>
+            <span class="bubble-text" id="bubble"><span class="bubble-line">Hungry? Pick something from my thali.</span></span>
+            <span class="bubble-caption" id="caption">Tap a dish to open that side</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plate-wrap" id="plateWrap">
+        <div class="plate" id="plate">
+          <span class="plate-well"></span>
+
+          <div class="plate-center">
+            <span class="center-top" id="centerTop">Pick a dish</span>
+            <span class="center-bottom" id="centerBottom">Six tastes</span>
+          </div>
+
+          <button class="dish dish-kheer" data-i="0" aria-label="Sweet: Kheer" style="--x:50%;--y:17%;--d:.70s">
+            <span class="katori"></span>
+            <span class="food"></span>
+            <span class="steam"></span><span class="steam steam-2"></span>
+            <span class="dish-tag">Sweet</span>
+          </button>
+
+          <button class="dish dish-papad" data-i="1" aria-label="Salty: Papad" style="--x:78.6%;--y:33.5%;--d:.79s">
+            <span class="food"></span>
+            <span class="dish-tag">Salty</span>
+          </button>
+
+          <button class="dish dish-rasam" data-i="2" aria-label="Pungent: Pepper rasam" style="--x:78.6%;--y:66.5%;--d:.88s">
+            <span class="katori"></span>
+            <span class="food"></span>
+            <span class="steam"></span><span class="steam steam-2"></span>
+            <span class="dish-tag">Pungent</span>
+          </button>
+
+          <button class="dish dish-tamarind" data-i="3" aria-label="Sour: Tamarind curry" style="--x:50%;--y:83%;--d:.97s">
+            <span class="katori"></span>
+            <span class="food"></span>
+            <span class="dish-tag">Sour</span>
+          </button>
+
+          <button class="dish dish-gourd" data-i="4" aria-label="Bitter: Bitter gourd stir fry" style="--x:21.4%;--y:66.5%;--d:1.06s">
+            <span class="katori"></span>
+            <span class="food"></span>
+            <span class="dish-tag">Bitter</span>
+          </button>
+
+          <button class="dish dish-banana" data-i="5" aria-label="Astringent: Raw banana stir fry" style="--x:21.4%;--y:33.5%;--d:1.15s">
+            <span class="katori"></span>
+            <span class="food"></span>
+            <span class="dish-tag">Astringent</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <button class="scroll-cue" id="scrollCue"><span>Thirsty? Scroll down for a drink</span><span class="scroll-arrow">↓</span></button>
+  </div>
+</section>
+
+<!-- Ghost: plate → bottle morph while scrolling -->
+<div class="ghost" id="ghost" aria-hidden="true">
+  <div class="ghost-plate" id="ghostA">
+    <span class="plate-well"></span>
+    <span class="ghost-center"></span>
+    <span class="ghost-drop" style="--x:50%;--y:17%;--hue:0"></span>
+    <span class="ghost-drop" style="--x:78.6%;--y:33.5%;--hue:225"></span>
+    <span class="ghost-drop" style="--x:78.6%;--y:66.5%;--hue:40"></span>
+    <span class="ghost-drop" style="--x:50%;--y:83%;--hue:105"></span>
+    <span class="ghost-drop" style="--x:21.4%;--y:66.5%;--hue:300"></span>
+    <span class="ghost-drop" style="--x:21.4%;--y:33.5%;--hue:150"></span>
+  </div>
+  <div class="ghost-bottle" id="ghostB">
+    <span class="b-cap"></span>
+    <span class="b-band"></span>
+    <span class="b-neck"></span>
+    <span class="b-body"><span class="b-liquid"></span></span>
+  </div>
+</div>
+
+<div class="content" id="drinks">
+
+  <!-- ============ Pour: six tastes, poured ============ -->
+  <div class="pour" id="pour">
+    <div class="pour-sticky">
+      <div class="pour-head">
+        <span class="eyebrow">After the meal, a drink</span>
+        <h2>Six tastes, poured.</h2>
+        <p id="pourHint">Keep scrolling to pour.</p>
+      </div>
+      <div class="stage" id="stage">
+
+        <div class="bottle-wrap" id="bottleWrap">
+          <div class="bottle" id="bottle">
+            <span class="wire wire-l"></span>
+            <span class="wire wire-r"></span>
+            <span class="wire-bar"></span>
+            <span class="b-cap"></span>
+            <span class="b-band"></span>
+            <span class="b-neck"></span>
+            <span class="b-body">
+              <span class="b-liquid" id="bottleLiquid"><span class="b-surface"></span></span>
+              <span class="b-shine"></span>
+              <span class="b-label"><span class="b-label-top">Thejovati's</span><span class="b-label-name">Six Tastes</span></span>
+            </span>
+          </div>
+        </div>
+
+        <div class="glass-slot" data-i="0" style="--hue:0"><button class="glass" data-i="0" aria-label="Sweet: About me"><span class="glass-cup"><span class="straw"></span><span class="glass-shape"><span class="glass-inner"><span class="glass-fill"></span><span class="glass-base"></span><span class="glass-shine"></span></span></span></span><span class="glass-name">Sweet</span><span class="glass-holds">About me</span><span class="glass-dot"></span></button></div>
+        <div class="glass-slot" data-i="1" style="--hue:225"><button class="glass" data-i="1" aria-label="Salty: Skills"><span class="glass-cup"><span class="straw"></span><span class="glass-shape"><span class="glass-inner"><span class="glass-fill"></span><span class="glass-base"></span><span class="glass-shine"></span></span></span></span><span class="glass-name">Salty</span><span class="glass-holds">Skills</span><span class="glass-dot"></span></button></div>
+        <div class="glass-slot" data-i="2" style="--hue:40"><button class="glass" data-i="2" aria-label="Pungent: Projects"><span class="glass-cup"><span class="straw"></span><span class="glass-shape"><span class="glass-inner"><span class="glass-fill"></span><span class="glass-base"></span><span class="glass-shine"></span></span></span></span><span class="glass-name">Pungent</span><span class="glass-holds">Projects</span><span class="glass-dot"></span></button></div>
+        <div class="glass-slot" data-i="3" style="--hue:105"><button class="glass" data-i="3" aria-label="Sour: Experience"><span class="glass-cup"><span class="straw"></span><span class="glass-shape"><span class="glass-inner"><span class="glass-fill"></span><span class="glass-base"></span><span class="glass-shine"></span></span></span></span><span class="glass-name">Sour</span><span class="glass-holds">Experience</span><span class="glass-dot"></span></button></div>
+        <div class="glass-slot" data-i="4" style="--hue:300"><button class="glass" data-i="4" aria-label="Bitter: Leadership"><span class="glass-cup"><span class="straw"></span><span class="glass-shape"><span class="glass-inner"><span class="glass-fill"></span><span class="glass-base"></span><span class="glass-shine"></span></span></span></span><span class="glass-name">Bitter</span><span class="glass-holds">Leadership</span><span class="glass-dot"></span></button></div>
+        <div class="glass-slot" data-i="5" style="--hue:150"><button class="glass" data-i="5" aria-label="Astringent: Beyond class"><span class="glass-cup"><span class="straw"></span><span class="glass-shape"><span class="glass-inner"><span class="glass-fill"></span><span class="glass-base"></span><span class="glass-shine"></span></span></span></span><span class="glass-name">Astringent</span><span class="glass-holds">Beyond class</span><span class="glass-dot"></span></button></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Taste panel ============ -->
+  <main class="panel" id="panel" style="--hue:0">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <span class="panel-kicker" id="panelKicker">01 · Sweet</span>
+        <h2 id="panelTitle">About me</h2>
+        <p id="panelLine">Sweet comes first on the plate, so it comes first here too. This is me, before any of the work.</p>
+      </div>
+      <span class="panel-persona" id="panelPersona">The warm one</span>
+    </div>
+    <div class="panel-body">
+
+      <!-- Sweet · About me -->
+      <div class="taste" data-key="sweet">
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="about-lead">I'm Thejovati Narayanan. I'm a soft spot for the people I love, a little stubborn about what I believe in, and firm about one thing: kindness and self-respect should always go together.</p>
+            <p>I'm from Chennai, so good food, the sea, and a little chaos feel like home. Growing up across different schools and countries taught me to adapt, embrace new places, and carry a little piece of home wherever I go.</p>
+            <p>I'm happiest around water, exploring new places, finding perfumes that feel like memories, or sharing good food. I'm just as up for a spontaneous “let's go somewhere” as I am for a quiet evening rewatching <i>Suits</i> for the fourth time. I love a little adventure, but I also love the comfort of knowing exactly how my favourite story ends.</p>
+            <p>Yoga has taught me patience and discipline, and winning national-level competitions remains one of my proudest experiences. I'm not always the loudest in the room, but I'm comfortable with who I am.</p>
+            <p>Currently, I'm pursuing an integrated B.Tech + MBA in Data Science at NMIMS MPSTME, Mumbai. But beyond what I study, I'm someone who wants a life filled with meaningful people, beautiful places, unforgettable flavours, and little moments worth holding on to.</p>
+          </div>
+          <div class="about-cards">
+            <div class="card about-card">
+              <span class="label">Fun fact</span>
+              <div class="stats">
+                <div><span class="stat-num">6</span><span class="stat-lbl">schools</span></div>
+                <div><span class="stat-num">3</span><span class="stat-lbl">countries</span></div>
+                <div><span class="stat-num">3</span><span class="stat-lbl">boards</span></div>
+              </div>
+              <span class="muted-serif">I've been the new kid more times than most, and learned to settle in fast.</span>
+            </div>
+            <div class="card about-card">
+              <span class="label">Things I love</span>
+              <div class="chips chips-sm">
+                <span>Chennai</span><span>Family</span><span>Music</span><span>Yoga</span><span>Rain</span><span>Beaches</span><span>Food</span><span>Movies</span>
+              </div>
+            </div>
+            <div class="card about-card about-now">
+              <span class="label">Now</span>
+              <span class="now-title">B.Tech + MBA (Integrated), Data Science</span>
+              <span class="muted-serif">SVKM's NMIMS MPSTME, Mumbai · 2024–2029 · Year 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salty · Skills -->
+      <div class="taste" data-key="salty" hidden>
+        <div class="grid-260">
+          <div class="card card-lg"><span class="label">Languages &amp; Tools</span><div class="chips"><span>Python</span><span>NumPy</span><span>Pandas</span><span>Scikit-learn</span><span>XGBoost</span><span>FastAPI</span><span>SHAP</span><span>SQL / MySQL</span><span>R</span><span>AWS</span></div></div>
+          <div class="card card-lg"><span class="label">Data &amp; Analytics</span><div class="chips"><span>Tableau</span><span>Power BI</span><span>Excel</span><span>Jupyter</span><span>VS Code</span><span>Docker</span></div></div>
+          <div class="card card-lg"><span class="label">Other</span><div class="chips"><span>n8n (workflow automation)</span><span>Supabase</span><span>Android Studio</span><span>AutoCAD</span></div></div>
+        </div>
+      </div>
+
+      <!-- Pungent · Projects -->
+      <div class="taste taste-tight" data-key="pungent" hidden>
+        <div class="projects">
+
+          <details class="project"><summary><span class="p-num">01</span><span class="p-head"><span class="p-title-row"><span class="p-title">Hybrid AI Framework for Sustainable, Emission-Constrained Supply Chain Optimization</span><span class="p-badge">Paper accepted · COMSYS-2026</span></span><span class="p-stack">Python · LSTM/GRU · NSGA-II · PPO Reinforcement Learning · Monte Carlo · ABM</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Developed a closed-loop 6-stage system combining LSTM forecasting (MAPE 7.4%, 93% CI), NSGA-II optimization with strict CO₂ constraints, and Monte Carlo + ABM stress testing (500 scenarios, CVaR95).</li><li>Achieved 40.3% CO₂ reduction (9.97 → 5.95 kg) vs static baseline with zero emission budget violations across all 500 scenarios - the only benchmark to guarantee this; soft-penalty approaches still produced violations.</li><li>PPO controller added a further −12% operational CO₂ and +8% cumulative reward on top of NSGA-II; framework auto-reallocated to lower-emission suppliers above $40/tonne carbon tax with &lt;5% cost degradation.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">02</span><span class="p-head"><span class="p-title">VitalEdge+ — AI Clinical Intelligence System for Allergy Risk Detection</span><span class="p-stack">Python · XGBoost · FastAPI · SHAP</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Built an end-to-end AI system for real-time medication–allergy conflict detection using a dual-engine approach (rule-based + XGBoost), achieving near-perfect accuracy.</li><li>Introduced an Allergy Burden Score and integrated SHAP explainability for transparent, auditable predictions in high-stakes clinical settings.</li><li>Deployed via FastAPI with a real-time React dashboard for point-of-care decision support across clinical workflows.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">03</span><span class="p-head"><span class="p-title">AI Startup Boardroom — Multi-Agent Investment Committee System</span><span class="p-stack">Python · FastAPI · React · LLM Orchestration</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Built a 7-agent system (CFO, Market, Founder, Traction, Risk, Investor, CEO) that independently analyzes a startup from a 100,000-row dataset and deliberates through a structured 4-round protocol (independent analysis → cross-examination → bounded revision → final decision), with a disagreement-detection engine that pairs the most bullish and most skeptical agents from structured position data (not LLM sentiment) and auto-detects stalemates to bound debate length.</li><li>Built a deterministic, dataset-grounded Mock Mode for zero-cost demoing alongside a swappable real LLM mode, validated by 47 automated tests covering agents, orchestration, and the API layer.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">04</span><span class="p-head"><span class="p-title">AWS Serverless Credit Card Fraud Detection System</span><span class="p-stack">Python · AWS Lambda · API Gateway · DynamoDB · Terraform</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Designed and deployed a fully serverless fraud detection pipeline (Lambda + API Gateway + DynamoDB, zero EC2/ALB/VPC, ~25 AWS resources via Terraform, effectively $0 cost) on the ULB dataset (284,807 transactions, 0.173% fraud rate), reimplementing inference as a zero-dependency, pure-Python Lambda handler (~15KB, no ML libraries) verified byte-identical to the original scikit-learn model.</li><li>Tuned a Logistic Regression model's decision threshold on a held-out validation set to correct for severe class imbalance, achieving 0.89 precision / 0.79 recall / 0.83 F1 and 0.966 ROC-AUC on an untouched test set, and validated the live deployed API against 50 held-out transactions (45/50 correct, 0 false positives).</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">05</span><span class="p-head"><span class="p-title">Influencer Analytics &amp; Brand Collaboration Platform</span><span class="p-stack">PostgreSQL · FastAPI · Python · Chart.js · DBeaver</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Designed and built a full-stack analytics platform from scratch: 8-table PostgreSQL schema (3NF, ~20,000 rows across influencers, brands, campaigns, collaborations, posts) and FastAPI backend (JWT auth, 25+ endpoints, analytics APIs).</li><li>Developed a live dashboard with KPI visualizations, filters, and real-time updates for campaign performance and engagement insights, all sourcing data from authenticated API calls.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">06</span><span class="p-head"><span class="p-title">Healthcare Data Warehouse Pipeline</span><span class="p-stack">Python · ETL · SCD Type 2 · Star Schema · SQL</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Designed and implemented a full ETL pipeline to consolidate siloed patient records, lab results, and prescriptions from disparate healthcare systems into a unified analytical warehouse.</li><li>Implemented SCD Type 2 for full historical tracking and modelled a Star Schema for efficient, analytics-ready querying and reporting.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">07</span><span class="p-head"><span class="p-title">Load Balancing in M/M/K Queues — Routing Policy Simulation</span><span class="p-stack">Python · Queueing Theory · Erlang C</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Simulated and benchmarked multiple server-routing policies (Round Robin, Join-Shortest-Queue, Hybrid, Po2C) across varying traffic intensities and server configurations.</li><li>Validated simulation outputs against Erlang C theoretical predictions, quantifying performance gaps between policies on wait time, utilization, and throughput.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">08</span><span class="p-head"><span class="p-title">LifeBridge — Healthcare Mobile App</span><span class="p-stack">Android Studio · Java/Kotlin</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Developed LifeBridge, a mobile application designed to connect patients with emergency healthcare resources; managed end-to-end app development from wireframes to deployment-ready build.</li></ul></details>
+
+          <details class="project"><summary><span class="p-num">09</span><span class="p-head"><span class="p-title">Spotify Listening Behaviour Dashboard</span><span class="p-stack">PowerBI · Excel · Data Visualization</span></span><span class="p-pm" data-pm>+</span></summary>
+          <ul><li>Extracted and cleaned personal Spotify streaming data, performed behavioural analysis (listening trends, genre shifts, peak hours), and built an interactive PowerBI dashboard surfacing actionable listening insights.</li></ul></details>
+
+        </div>
+      </div>
+
+      <!-- Sour · Experience -->
+      <div class="taste" data-key="sour" hidden>
+        <div class="org-head">
+          <div class="org-name"><span class="org-title">Wisdomleaf Technologies Pvt. Ltd.</span><span class="org-sub">Internship · Bengaluru · AI-powered Prescription Parser</span></div>
+          <span class="pill pill-white">Jun 2026 – Present</span>
+        </div>
+        <div class="grid-260">
+          <div class="card card-lg card-tight"><div class="card-meta"><span>Phase 1</span><span>Completed</span></div><span class="card-title">AI prescription parser</span><p>Developed an AI-powered Prescription Parser assigned by the company, contributing to OCR integration, image preprocessing, data extraction, backend API development, medicine validation, and testing, leading to the successful completion of Phase 1 of the project.</p></div>
+          <div class="card card-lg card-tight"><div class="card-meta"><span>Phase 2</span><span>Paid extension</span></div><span class="card-title">Digital prescriptions</span><p>Based on the Phase 1 outcome, the company offered a paid extension on the internship (Phase 2). Developed a parser for digital prescriptions as part of Phase 2, enabling structured extraction of prescription data from digital prescription formats.</p></div>
+          <div class="card card-lg card-tight"><div class="card-meta"><span>Now</span><span>In progress</span></div><span class="card-title">Handwritten prescriptions, no AI</span><p>Currently developing a handwritten prescription parser without using AI, focusing on image processing, text extraction, and reliable parsing of handwritten prescription data.</p></div>
+        </div>
+        <div class="rule"></div>
+        <div class="org-head">
+          <div class="org-name"><span class="org-title">Xylofy AI</span><span class="org-sub">Internship · Remote · Data science &amp; analytics projects</span></div>
+          <span class="pill">3 projects</span>
+        </div>
+        <div class="grid-300">
+          <div class="card card-lg"><span class="label">Project 01 · Regression</span><span class="card-title">House Price Prediction</span><p>Predicted prices for 545 properties from 12 features, comparing Linear Regression with Random Forest.</p></div>
+          <div class="card card-lg"><span class="label">Project 02 · Classification</span><span class="card-title">Employee Attrition Prediction</span><p>Built a system on HR data from 1,470 employees that flags who is most likely to leave, and why.</p></div>
+          <div class="card card-lg"><span class="label">Project 03 · Forecasting</span><span class="card-title">Sales Forecasting &amp; Demand Intelligence</span><p>Analysed four years of sales (~$2.26M across 3 categories and 4 regions) to forecast the next quarter, find anomalies and segment products.</p></div>
+        </div>
+      </div>
+
+      <!-- Bitter · Leadership -->
+      <div class="taste" data-key="bitter" hidden>
+        <div class="lead-grid">
+          <div class="lead-role">
+            <span class="label">2024 – 2025 · College Committee, NMIMS MPSTME</span>
+            <span class="lead-title">Head of Corporate Relations &amp; Marketing</span>
+            <div class="promo">
+              <span class="promo-pill">Executive</span><span class="promo-arrow">— within one year →</span><span class="promo-pill promo-pill-white">Head</span>
+            </div>
+          </div>
+          <ul class="lead-list">
+            <li>Promoted from Executive to Head within one year, overseeing industry outreach and committee-level brand initiatives.</li>
+            <li>Coordinated with industry leaders and senior managers across sectors, managing end-to-end corporate engagement for college events.</li>
+            <li>Led marketing strategy and communications for committee-level campaigns, driving awareness and participation across the student body.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Astringent · Beyond class -->
+      <div class="taste" data-key="astringent" hidden>
+        <div class="beyond-grid">
+          <div class="card card-xl beyond-volunteer">
+            <span class="label">Community service · 3 weeks · 2025–26</span>
+            <span class="beyond-title">Volunteer, Anandam Trust Chennai</span>
+            <span class="beyond-sub">Anandam Free Home for Senior Citizens &amp; Anandam Special School</span>
+            <ul>
+              <li>Delivered digital literacy sessions to children with autism</li>
+              <li>Taught MS office and internet basics to underprivileged women</li>
+              <li>Taught across three ability groups at the Special School and facilitated numeracy, language, and creative activities</li>
+              <li>Catalogued the library with section-wise registered records for elder accessibility</li>
+            </ul>
+          </div>
+          <div class="card card-xl beyond-research">
+            <span class="label">Research</span>
+            <div class="paper">
+              <span class="paper-title">"A Hybrid LLM Framework for Emission-Constrained Supply Chains with Renewable-Aware RL"</span>
+              <span class="paper-sub">Paper accepted · COMSYS 2026</span>
+            </div>
+            <div class="rule rule-light"></div>
+            <div class="paper">
+              <span class="paper-title">"Quantum Key Distribution using Polarization"</span>
+              <span class="paper-sub">Research synthesis paper · Polarizer'25 · 2nd place</span>
+            </div>
+          </div>
+          <div class="beyond-small">
+            <div class="card card-sm">
+              <span class="label">Yoga</span>
+              <span class="small-title">National-level award winner</span>
+            </div>
+            <div class="card card-sm">
+              <span class="label">Hackathon</span>
+              <span class="small-title">Smart India Hackathon (SIH)</span>
+              <span class="paper-sub">2025 and 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-nav">
+      <button class="pill-btn" id="prevBtn">← <span id="prevName">Astringent</span></button>
+      <button class="pill-btn" id="nextBtn"><span id="nextName">Salty</span> →</button>
+    </div>
+  </main>
+
+  <!-- ============ Contact ============ -->
+  <section class="contact" id="contact" data-reveal>
+    <div class="contact-info">
+      <div class="contact-intro">
+        <h2>Get in touch</h2>
+        <span class="contact-sub">I'd love to hear from you.</span>
+        <p>Whether it's an internship, a project, a food recommendation or just a hello, send me a note and I'll get back to you.</p>
+      </div>
+      <a class="contact-mail" href="mailto:thejovati256@gmail.com"><svg width="26" height="20" viewBox="0 0 26 20" fill="none" stroke="#1c1a18" stroke-width="1.6" aria-hidden="true"><rect x="1" y="1" width="24" height="18" rx="2"></rect><path d="M1 2 L13 11 L25 2"></path></svg><span>thejovati256@gmail.com</span></a>
+      <div class="contact-links">
+        <a class="cta" style="--hue:0" href="assets/Thejovati-Narayanan-CV.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+        <a class="cta" style="--hue:225" href="https://www.linkedin.com/in/thejovati-narayanan-614a39323" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="cta" style="--hue:150" href="https://github.com/thejovati256-hub" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="name-note">
+        <span class="name-note-label">About the name</span>
+        <span class="name-note-text">Thejovati <span class="pron">(tay-jo-vuh-thee)</span> means radiance, or brightness.</span>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <label><span>First name</span><input name="first" type="text" autocomplete="given-name"></label>
+      <label><span>Last name</span><input name="last" type="text" autocomplete="family-name"></label>
+      <label class="full"><span>Email *</span><input name="email" type="email" required autocomplete="email"></label>
+      <label class="full"><span>Message</span><textarea name="message" rows="5"></textarea></label>
+      <div class="form-foot">
+        <span class="sent-note" id="sentNote" aria-live="polite"></span>
+        <button type="submit" class="send-btn">Send</button>
+      </div>
+    </form>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 Thejovati Narayanan · Mumbai, India</span>
+  </div>
+</footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
