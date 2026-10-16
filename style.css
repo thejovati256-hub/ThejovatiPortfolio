@@ -107,12 +107,13 @@ summary::-webkit-details-marker { display: none; }
 }
 .hero-copy { display: flex; flex-direction: column; gap: clamp(10px, 2.2vh, 22px); }
 .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.hero .eyebrow { font-size: clamp(16px, 4.4vw, 26px); line-height: 1.25; overflow-wrap: anywhere; }
 .r1 { animation: rise .7s var(--ease-out) .05s both; }
 .r2 { animation: rise .8s var(--ease-out) .15s both; }
 .r3 { animation: rise .8s var(--ease-out) .28s both; }
 .r4 { animation: rise .8s var(--ease-out) .42s both; }
 .hero h1 {
-  margin: 0; font-size: clamp(40px, min(6.5vw, 10vh), 92px); line-height: .9; font-weight: 800; letter-spacing: -.035em;
+  margin: 0; font-size: clamp(35px, min(5.7vw, 8.8vh), 81px); line-height: .9; font-weight: 800; letter-spacing: -.035em;
 }
 .hero-lede {
   margin: 0; font-family: var(--serif); font-style: italic;
