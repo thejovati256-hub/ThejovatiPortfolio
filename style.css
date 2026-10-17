@@ -544,6 +544,16 @@ details[open] summary [data-pm] { transform: rotate(45deg); }
 }
 .footer-inner span { color: rgba(247, 245, 240, .75); margin: 0 auto; }
 
+/* ---------- Mobile hero compaction ---------- */
+@media (max-width: 600px) {
+  .hero-lede { font-size: 16px; }
+  .greeter { margin-top: -6px; gap: 12px; }
+  .face { width: 92px; }
+  .bubble { min-width: 180px; padding: 12px 14px; gap: 8px; border-radius: 16px; }
+  .bubble-text { font-size: 15px; }
+  .plate { width: min(80vw, 300px); min-width: 260px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
