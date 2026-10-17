@@ -105,9 +105,12 @@ summary::-webkit-details-marker { display: none; }
   display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: clamp(28px, 5vw, 64px); align-items: center;
 }
-.hero-copy { display: flex; flex-direction: column; gap: clamp(10px, 2.2vh, 22px); }
+.hero-copy { display: flex; flex-direction: column; gap: clamp(10px, 2.2vh, 22px); container-type: inline-size; }
 .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-.hero .eyebrow { font-size: clamp(16px, 4.4vw, 26px); line-height: 1.25; overflow-wrap: anywhere; }
+/* Martian Mono is ~0.78em/char here (27 chars ≈ 20.7em), so 4.6cqi keeps the name on one line in its column */
+.hero .eyebrow { font-size: clamp(10px, 4.6cqi, 26px); line-height: 1.25; white-space: nowrap; }
+/* the mono comma fills a full-width cell; pull the following space back so the gap reads as normal */
+.hero .eyebrow-comma { margin-right: -.32em; }
 .r1 { animation: rise .7s var(--ease-out) .05s both; }
 .r2 { animation: rise .8s var(--ease-out) .15s both; }
 .r3 { animation: rise .8s var(--ease-out) .28s both; }
@@ -117,7 +120,7 @@ summary::-webkit-details-marker { display: none; }
 }
 .hero-lede {
   margin: 0; font-family: var(--serif); font-style: italic;
-  font-size: clamp(16px, min(1.8vw, 2.6vh), 22px); line-height: 1.4; color: var(--muted);
+  font-size: clamp(18px, min(2.03vw, 2.93vh), 25px); line-height: 1.4; color: var(--muted);
   max-width: 460px; text-wrap: pretty;
 }
 .greeter { display: flex; align-items: center; gap: clamp(14px, 2vw, 22px); flex-wrap: wrap; margin-top: 6px; }
