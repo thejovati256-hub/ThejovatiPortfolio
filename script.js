@@ -313,38 +313,65 @@
     io.observe(contact);
   }
 
-  // No backend: the form opens a pre-filled Gmail draft, and the visitor presses Send in Gmail.
+  // Messages are posted to Formspree in the background, so the visitor never leaves the page.
   var CONTACT_EMAIL = 'thejovati256@gmail.com';
+  var FORMSPREE_URL = 'https://formspree.io/f/mgaorqgv';
   var sentNote = $('sentNote');
-
-  function gmailComposeUrl(subject, body) {
-    var q = new URLSearchParams({ view: 'cm', fs: '1', to: CONTACT_EMAIL, su: subject, body: body });
-    // URLSearchParams writes spaces as '+'; use %20 so every mail client reads them as spaces
-    // (a literal '+' typed by the visitor is already escaped as %2B).
-    return 'https://mail.google.com/mail/?' + q.toString().replace(/\+/g, '%20');
-  }
+  var sendBtn = $('contactForm').querySelector('.send-btn');
+  var sending = false;
 
   $('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var form = e.currentTarget;
+    if (sending) return;
     if (!form.checkValidity()) { form.reportValidity(); return; }
 
     var f = new FormData(form);
     var val = function (k) { return String(f.get(k) || '').trim(); };
     var name = [val('first'), val('last')].filter(Boolean).join(' ');
     var email = val('email');
-    var subject = 'Hello from ' + (name || 'your portfolio');
-    var body = (val('message') || '(No message)') +
-      '\n\n—\nName: ' + (name || 'Not given') + '\nReply to: ' + email;
+    var payload = {
+      name: name || 'Not given',
+      email: email,
+      message: val('message') || '(No message)',
+      _replyto: email,
+      _subject: 'Hello from ' + (name || 'your portfolio')
+    };
 
-    // Called synchronously inside the submit handler so Chrome treats it as a user action, not a popup.
-    var win = window.open(gmailComposeUrl(subject, body), '_blank');
-    if (win) {
-      win.opener = null;
-      sentNote.textContent = 'Gmail opened in a new tab. Press Send there to deliver your message.';
-    } else {
-      sentNote.textContent = 'Your browser blocked the Gmail tab. Allow pop-ups for this site, or email me directly at ' + CONTACT_EMAIL + '.';
-    }
+    sending = true;
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
+    sentNote.textContent = '';
+
+    fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          if (!res.ok) {
+            var msg = data.errors && data.errors.length
+              ? data.errors.map(function (er) { return er.message; }).join(' ')
+              : 'The server returned an error (' + res.status + ').';
+            throw new Error(msg);
+          }
+        });
+      })
+      .then(function () {
+        form.reset();
+        sentNote.textContent = 'Thank you! Your message has been sent successfully.';
+      })
+      .catch(function (err) {
+        var detail = err && err.message && err.message !== 'Failed to fetch' ? ' ' + err.message : ' Please check your connection.';
+        sentNote.textContent = 'Sorry, your message could not be sent.' + detail +
+          ' Please try again, or email me directly at ' + CONTACT_EMAIL + '.';
+      })
+      .then(function () {
+        sending = false;
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send';
+      });
   });
 
   /* ---------- Init ---------- */
